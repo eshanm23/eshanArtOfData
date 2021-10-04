@@ -30,7 +30,7 @@ story = {
 1. What gets printed in the following snippet of code?
     ```py
     for x in story:
-      print(story)
+      print(x)
     ```
 1. What is a better name for the variable than `x`?
 1. How do we iterate through a dictionary's values?
