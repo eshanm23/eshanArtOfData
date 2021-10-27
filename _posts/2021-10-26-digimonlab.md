@@ -3,6 +3,8 @@ layout: post
 title: Digimon Lab
 subtitle: by Eshan Mehere
 cover-img: /assets/img/download (1).jpeg
+thumbnail-img: /assets/img/thumb.png
+share-img: assets/img/download (2).jpeg
 ---
 
 
