@@ -7,7 +7,7 @@ thumbnail-img: /assets/img/thumb.png
 share-img: assets/img/download (2).jpeg
 ---
 
-1. What is the average speed (Spd) of all Digimon?
+1) What is the average speed (Spd) of all Digimon?
 
 
         def avgSpeed(filepath):
@@ -37,7 +37,7 @@ I first created a new dictionary "d" which I knew would be my final dictionary t
 
 I then opened the file using DictReader, and looped through the CSV. For each row in the CSV I took the Speed (Spd) for that Digimon, turned it into a float so it could be manipulated arithmetically, and then added it to my total speed key in the dictionary d. I added 1 to the Number of Digimon key for each row in the CSV, because each row represents a new Digimon. Below this line, I also defined my average key, and very simply, my average was just Total Speed/Number of Digimon. I returned the dictionary, and then printed out the Average Speed function using the digimon dataset. Below the Print statement shows the Output in the Terminal for this method (the dictionary d, filled with values) . 
 
-2. Write a function that can count the number of Digimon with a specific attribute. For example, count_digimon("Type", "Vaccine") would return 70.
+2) Write a function that can count the number of Digimon with a specific attribute. For example, count_digimon("Type", "Vaccine") would return 70.
 
         def count_digimon(key, value):
             with open("datasets/digimon.csv", "r") as file:
@@ -55,7 +55,7 @@ There are 70 Digimon in this dataset with the type of "Vaccine." Above is the co
 
 I started by opening my data set. I used key and value as inputs for this function because I want this function to work for any attribute and any value, and so the user can choose which two they would like. I created a new variable match_trait that basically serves as what I use to count. I set that equal to zero since obviously nothing has been counted before I loop through the data. I then loop through the data, and essentially just add 1 whenever we come across a Digimon that has the desired attribute combo. After returning my count variable (which now houses a number that shows the number of Digimon that fit this attribute), I can just print out my function. It is important to note that the print statement is where I choose which attribute I would like to run this function for. In this case we are looking for how many Digimon have a type of Vaccine. This prints out 70 in the terminal, indicating that in our dataset of 249 Digimon, 70 have this attribute.
 
-3. The Digimon on your team are restricted by the total amount of Memory that they need. If your team only has 15 Memory, name a team of up to 3 Digimon that has at least 300 attack (Atk) in total.
+3) The Digimon on your team are restricted by the total amount of Memory that they need. If your team only has 15 Memory, name a team of up to 3 Digimon that has at least 300 attack (Atk) in total.
 
         def createTeam():
             with open("datasets/digimon.csv", "r") as file:
