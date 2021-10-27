@@ -1,4 +1,5 @@
 import csv
+}
 def avgSpeed(filepath):
     d={
         "Total Speed": 0,
