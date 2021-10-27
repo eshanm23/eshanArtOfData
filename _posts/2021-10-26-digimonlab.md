@@ -1,6 +1,12 @@
-import csv
-}
-def avgSpeed(filepath):
+---
+layout: post
+title: Digimon Lab
+subtitle: by Eshan Mehere
+cover-img: /assets/img/download (1).jpeg
+---
+
+
+{def avgSpeed(filepath):
     d={
         "Total Speed": 0,
         "Number of Digimon": 0
@@ -15,9 +21,11 @@ def avgSpeed(filepath):
             d["Number of Digimon"] += 1
             d["Average"]= (d["Total Speed"])/(d["Number of Digimon"])
     return d
+        
     
 print(avgSpeed("datasets/digimon.csv"))
 {'Total Speed': 29980.0, 'Number of Digimon': 249, 'Average': 120.40160642570281}
+    }
 
 The average speed of all Digimon is ~120.401. Above is the code I used to get this result. I basically thought of this problem in a similar manner to the Penguins Practice worksheet. I knew it could very easily be done with dictionaries. I knew my end result would be a dictionary with keys that show the total number of digimon in the dataset, and the total speed of all Digimon. And then I would want to have a third key that computes the average. This is similar to how I found the Total Bill Length and Total Number of Penguins for Penguins Practice. Now let's talk through our actual code. 
 
