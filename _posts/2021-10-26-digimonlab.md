@@ -10,25 +10,25 @@ share-img: assets/img/download (2).jpeg
 1. What is the average speed (Spd) of all Digimon?
 
 
-    def avgSpeed(filepath):
-        d={
-            "Total Speed": 0,
-            "Number of Digimon": 0
+        def avgSpeed(filepath):
+            d={
+                "Total Speed": 0,
+                "Number of Digimon": 0
 
-        }
-            with open(filepath, "r") as file:
-                data = csv.DictReader(file)
+            }
+                with open(filepath, "r") as file:
+                    data = csv.DictReader(file)
 
-                for row in data:
+                    for row in data:
 
-                    d["Total Speed"]+= float(row["Spd"])
-                    d["Number of Digimon"] += 1
-                    d["Average"]= (d["Total Speed"])/(d["Number of Digimon"])
-            return d
+                        d["Total Speed"]+= float(row["Spd"])
+                        d["Number of Digimon"] += 1
+                        d["Average"]= (d["Total Speed"])/(d["Number of Digimon"])
+                return d
         
     
-        print(avgSpeed("datasets/digimon.csv"))
-        {'Total Speed': 29980.0, 'Number of Digimon': 249, 'Average': 120.40160642570281}
+            print(avgSpeed("datasets/digimon.csv"))
+            {'Total Speed': 29980.0, 'Number of Digimon': 249, 'Average': 120.40160642570281}
     
 
 The average speed of all Digimon is ~120.401. Above is the code I used to get this result. I basically thought of this problem in a similar manner to the Penguins Practice worksheet. I knew it could very easily be done with dictionaries. I knew my end result would be a dictionary with keys that show the total number of digimon in the dataset, and the total speed of all Digimon. And then I would want to have a third key that computes the average. This is similar to how I found the Total Bill Length and Total Number of Penguins for Penguins Practice. Now let's talk through our actual code. 
@@ -39,17 +39,17 @@ I then opened the file using DictReader, and looped through the CSV. For each ro
 
 2. Write a function that can count the number of Digimon with a specific attribute. For example, count_digimon("Type", "Vaccine") would return 70.
 
-    def count_digimon(key, value):
-        with open("datasets/digimon.csv", "r") as file:
-            data = csv.DictReader(file)
-            match_trait = 0
-            for row in data: 
-                if row[key] == value:
-                    match_trait+=1
-        return match_trait
+        def count_digimon(key, value):
+            with open("datasets/digimon.csv", "r") as file:
+                data = csv.DictReader(file)
+                match_trait = 0
+                for row in data: 
+                    if row[key] == value:
+                        match_trait+=1
+            return match_trait
 
-    print(count_digimon("Type", "Vaccine"))
-    70
+        print(count_digimon("Type", "Vaccine"))
+        70
 
 There are 70 Digimon in this dataset with the type of "Vaccine." Above is the code I used to determine this. I figured out very quickly that you could more generally call keys and values of a dictionary using the terms "key" and "value." This created my roadmap for how to solve this problem. I was able to think of this solution relatively quickly, and utilizing the key and value terms was the first way I thought of this function. I will explain the actual code (and more of the process) next. 
 
@@ -57,18 +57,18 @@ I started by opening my data set. I used key and value as inputs for this functi
 
 3. The Digimon on your team are restricted by the total amount of Memory that they need. If your team only has 15 Memory, name a team of up to 3 Digimon that has at least 300 attack (Atk) in total.
 
-    def createTeam():
-        with open("datasets/digimon.csv", "r") as file:
-            data = list(csv.DictReader(file))
+        def createTeam():
+            with open("datasets/digimon.csv", "r") as file:
+                data = list(csv.DictReader(file))
     
-        for row1 in data:
-            for row2 in data:
-                for row3 in data:
-                    if (float(row1["Memory"])+ float(row2["Memory"])+ float(row3["Memory"]))<=15 and (float(row1["Atk"])+float(row2["Atk"])+float(row3["Atk"]))>=300 and row1!=row2!=row3:
-                        return(row1["Digimon"], row2["Digimon"], row3["Digimon"])
+            for row1 in data:
+                for row2 in data:
+                    for row3 in data:
+                        if (float(row1["Memory"])+ float(row2["Memory"])+ float(row3["Memory"]))<=15 and (float(row1["Atk"])+float(row2["Atk"])+float(row3["Atk"]))>=300 and row1!=row2!=row3:
+                            return(row1["Digimon"], row2["Digimon"], row3["Digimon"])
     
-    print(createTeam())
-    ('Kuramon', 'Pabumon', 'Ogremon')
+        print(createTeam())
+        ('Kuramon', 'Pabumon', 'Ogremon')
 
 "Kuramon," "Pabumon," and "Ogremon" are a team of three Digimon that fit this criteria. There are several other combinations that match this criteria. The code for determining this shown above. I knew right from the get go that I would need to use a triple nested for loop because I needed 3 Digimon for this to work. I also knew that I would have to manually enter the conditions that are required to be fulfilled. The actual code will be explained below.
 
