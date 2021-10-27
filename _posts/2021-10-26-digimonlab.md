@@ -39,4 +39,23 @@ print(count_digimon("Type", "Vaccine"))
 
 There are 70 Digimon in this dataset with the type of "Vaccine." Above is the code I used to determine this. I figured out very quickly that you could more generally call keys and values of a dictionary using the terms "key" and "value." This created my roadmap for how to solve this problem. I was able to think of this solution relatively quickly, and utilizing the key and value terms was the first way I thought of this function. I will explain the actual code (and more of the process) next. 
 
-I started by opening my data set. I used key and value as inputs for this function because I want this function to work for any attribute and any value, and so the user can choose which two they would like. I created a new variable match_trait that basically serves as what I use to count. I set that equal to zero since obviously nothing has been counted before I loop through the data. I then loop through the data, and essentially just add 1 whenever we come across a Digimon that has the desired attribute combo. After returning my count variable (which now houses a number that shows the number of Digimon that fit this attribute), I can just print out my function. It is important to note that the print statement is where I choose which attribute I would like to run this function for. In this case we are looking for how many Digimon have a type of Vaccine. This prints out 70 in the terminal, indicating that in our dataset of 249 Digimon, 70 have this attribute.  
+I started by opening my data set. I used key and value as inputs for this function because I want this function to work for any attribute and any value, and so the user can choose which two they would like. I created a new variable match_trait that basically serves as what I use to count. I set that equal to zero since obviously nothing has been counted before I loop through the data. I then loop through the data, and essentially just add 1 whenever we come across a Digimon that has the desired attribute combo. After returning my count variable (which now houses a number that shows the number of Digimon that fit this attribute), I can just print out my function. It is important to note that the print statement is where I choose which attribute I would like to run this function for. In this case we are looking for how many Digimon have a type of Vaccine. This prints out 70 in the terminal, indicating that in our dataset of 249 Digimon, 70 have this attribute. 
+
+def createTeam():
+    with open("datasets/digimon.csv", "r") as file:
+        data = list(csv.DictReader(file))
+    
+    for row1 in data:
+        for row2 in data:
+            for row3 in data:
+                if (float(row1["Memory"])+ float(row2["Memory"])+ float(row3["Memory"]))<=15 and (float(row1["Atk"])+float(row2["Atk"])+float(row3["Atk"]))>=300 and row1!=row2!=row3:
+                    return(row1["Digimon"], row2["Digimon"], row3["Digimon"])
+    
+print(createTeam())
+('Kuramon', 'Pabumon', 'Ogremon')
+
+"Kuramon," "Pabumon," and "Ogremon" are a team of three Digimon that fit this criteria. There are several other combinations that match this criteria. The code for determining this shown above. I knew right from the get go that I would need to use a triple nested for loop because I needed 3 Digimon for this to work. I also knew that I would have to manually enter the conditions that are required to be fulfilled. The actual code will be explained below.
+
+I started by defining the function, and I knew the function would not require any inputs because there were not any specific cases we had to account for. I opened the file and used the DictReader because I knew the CSV had to be manipulated as such. I ran the triple nested for loop which is essentially a for loop, but runs through every 3 row combination in the CSV instead of every row. I then inputted my conditions. I knew that the memory of these three Digimon had to be less than 15, so I indicated that in the first part of the if statement, turning the strings into floats so they could be manipulated arithemtically. I also knew that they needed to have Attack (Atk) of at least 300 in order to be considered a viable team, and so I indicated that in the second part of the if statement. I once again turned the Atk strings into floats so that they could be manipulated arithmetically. Finally, I also knew that a viable team could not consist of repeated Digimon so I had to indicate that the three Digimon were all distinct; this was done in the last part of the if statement. Finally, I returned the Digimon (name) of the three rows that matched the criteria and printed the function out.  
+
+
